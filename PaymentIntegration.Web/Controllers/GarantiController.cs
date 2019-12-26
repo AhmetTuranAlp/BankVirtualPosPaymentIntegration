@@ -13,23 +13,11 @@ namespace PaymentIntegration.Web.Controllers
 {
     public class GarantiController : GarantiBaseController
     {
-
-        #region 3D Secure Satış
         public ActionResult Sale3DSecure()
         {
             return View();
         }
 
-        /// <summary>
-        /// 3D Secure Satış Post
-        /// </summary>
-        /// <param name="creditCardNo"></param>
-        /// <param name="expireMonth"></param>
-        /// <param name="expireYear"></param>
-        /// <param name="cvv"></param>
-        /// <param name="transactionAmount"></param>
-        /// <param name="orderID"></param>
-        /// <returns></returns>
         [HttpPost]
         public ActionResult Sale3DSecure(string creditCardNo, string expireMonth, string expireYear, string cvv, string transactionAmount, string orderID)
         {
@@ -42,17 +30,17 @@ namespace PaymentIntegration.Web.Controllers
             request.terminalprovuserid = terminal.ProvUserID;
             request.terminalmerchantid = terminal.MerchantID;
 
-            request.successurl = "http://localhost:2428/Garanti/Success";
-            request.errorurl = "http://localhost:2428/Garanti/Error";
-            request.customeremailaddress = "ahmetturanalp@gmail.com";
-            request.customeripaddress = "127.0.0.1"; 
-            request.secure3dsecuritylevel = "3D"; // Ödeme Sekli Seçilmektedir.(3DSecure)
-            request.orderid = orderID;
-            request.txnamount = transactionAmount;
-            request.txntype = "sales";
-            request.txninstallmentcount = "";
-            request.txncurrencycode = "949";
-            request.storekey = "12345678";
+            request.successurl = "http://localhost:2428/Garanti/Success"; //Başarılı Döndügünde Gidilecek Sayfa
+            request.errorurl = "http://localhost:2428/Garanti/Error"; //Başarısız Döndügünde Gidilecek Sayfa
+            request.customeremailaddress = "ahmetturanalp@gmail.com"; //Kullanıcı Mail Adresi
+            request.customeripaddress = "127.0.0.1"; //Kullanıcı IP Adresi
+            request.secure3dsecuritylevel = "3D"; //Ödeme Sekli(3DSecure)
+            request.orderid = orderID; //Her İşlemde Farklı Bir Değer Gönderilmeli    
+            request.txnamount = transactionAmount;  //İşlem Tutarı 1.00 TL için 100 Gönderilmeli
+            request.txntype = "sales"; //İşlem Tipi
+            request.txninstallmentcount = ""; //Taksit Sayısı. Boş Gönderilirse Taksit Yapılmaz
+            request.txncurrencycode = "949"; //Türk Lirası
+            request.storekey = "12345678"; //Storekey Verisi Yazılması Gerekiyor.
             request.txntimestamp = DateTime.Now.Ticks.ToString();
             request.cardnumber = creditCardNo;
             request.cardexpiredatemonth = expireMonth;
@@ -68,9 +56,7 @@ namespace PaymentIntegration.Web.Controllers
 
             return View();
         }
-        #endregion
 
-        #region 3D Error/Success Page
         public ActionResult Error()
         {
             string[] keys = Request.Form.AllKeys;
@@ -89,12 +75,13 @@ namespace PaymentIntegration.Web.Controllers
         [HttpPost]
         public ActionResult Success()
         {
-            //Validation kontrolü yapılır.
+            bool valid = false;
+
+            #region Validation kontrolü yapılır.
             string hash = Request.Form.Get("hash");
             string hashParamsVal = "";
             string storeKey = "12345678";  // kendi storekey değeri girilmelidir.
             string hashParams = Request.Form.Get("hashparams");
-            bool valid = false;
 
             if (hashParams != null && hashParams != "")
             {
@@ -107,10 +94,13 @@ namespace PaymentIntegration.Web.Controllers
                 hashParamsVal += storeKey;
                 valid = Helper.Validate3DReturn(hashParamsVal, hash);
             }
+            #endregion
 
             if (valid)
             {
                 // işlem başarılı ise değerler alınır.
+                //mdStatus = 1 alan işlem tam doğrulama olarak adlandırılır. Bu işlemde müşteri tarafından  kart şifresi başarılı olarak girilmiştir.
+                //mdStatus = 2,3,4 alan işlemler yarım doğrulama olarak da degerlendirilir.
                 if ((Request.Form.Get("mdstatus").ToString() == "1") || (Request.Form.Get("mdstatus").ToString() == "2")
                 || (Request.Form.Get("mdstatus").ToString() == "3") || (Request.Form.Get("mdstatus").ToString() == "4"))
                 {
@@ -147,10 +137,10 @@ namespace PaymentIntegration.Web.Controllers
                     };
 
                     var request = new Secure3DCompleteRequest();
-
                     request.Version = secure3DResponse.apiversion;
                     request.Mode = secure3DResponse.mode;
 
+                    #region Terminal Bilgileri Alınır.
                     request.Terminal = new Terminal()
                     {
                         ID = secure3DResponse.terminalID,
@@ -158,6 +148,9 @@ namespace PaymentIntegration.Web.Controllers
                         ProvUserID = secure3DResponse.terminalProvUserID,
                         UserID = secure3DResponse.terminalUserID
                     };
+                    #endregion
+
+                    #region Kart Bilgileri Alınır.
                     request.Card = new Card()
                     {
                         CVV2 = "",
@@ -165,11 +158,15 @@ namespace PaymentIntegration.Web.Controllers
                         Number = ""
 
                     };
+                    #endregion
+
+                    #region Kullanıcı Mail ve IP Adresi Alınır.
                     request.Customer = new Customer()
                     {
                         EmailAddress = secure3DResponse.customerEmailAddress,
                         IPAddress = secure3DResponse.customerIpAddres
                     };
+                    #endregion
 
                     var secure3D = new Secure3D();
                     secure3D.AuthenticationCode = secure3DResponse.authenticationCode;
@@ -194,7 +191,6 @@ namespace PaymentIntegration.Web.Controllers
                         Secure3D = secure3D
                     };
 
-
                     var response = Secure3DCompleteRequest.Execute(request, settings);
                     secure3DResponse.xmlResponse = response;
                     return View(secure3DResponse);
@@ -205,20 +201,6 @@ namespace PaymentIntegration.Web.Controllers
                 Response.Write("Hash Doğrulaması Yapılamadı.");
             return View();
         }
-        #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }
