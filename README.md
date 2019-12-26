@@ -8,7 +8,11 @@ Garanti Banks Documentation
 For testing environment reporting: https://sanalposwebtest.garanti.com.tr
  
 Business Id: 7000679
+
 Username: GARANTI
+
 Password: destek
+
 Password: 123456WqE
+
 
