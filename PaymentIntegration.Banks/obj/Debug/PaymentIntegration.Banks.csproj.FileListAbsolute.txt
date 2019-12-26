@@ -1,0 +1,6 @@
+C:\Users\Yceo\source\repos\PaymentIntegration\PaymentIntegration.Banks\bin\Debug\PaymentIntegration.Banks.dll
+C:\Users\Yceo\source\repos\PaymentIntegration\PaymentIntegration.Banks\bin\Debug\PaymentIntegration.Banks.pdb
+C:\Users\Yceo\source\repos\PaymentIntegration\PaymentIntegration.Banks\obj\Debug\PaymentIntegration.Banks.csprojAssemblyReference.cache
+C:\Users\Yceo\source\repos\PaymentIntegration\PaymentIntegration.Banks\obj\Debug\PaymentIntegration.Banks.csproj.CoreCompileInputs.cache
+C:\Users\Yceo\source\repos\PaymentIntegration\PaymentIntegration.Banks\obj\Debug\PaymentIntegration.Banks.dll
+C:\Users\Yceo\source\repos\PaymentIntegration\PaymentIntegration.Banks\obj\Debug\PaymentIntegration.Banks.pdb
