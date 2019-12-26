@@ -1,5 +1,5 @@
 
-Garanti Banks Documentation
+Garanti Bank Documentation
 
 *https://github.com/GarantiETicaret/garanti-eticaret-net
 
@@ -17,3 +17,4 @@ Password: 123456WqE
 
 ------------------------------------------------------------------------------------------------------
 
+İş Bank Documentation
