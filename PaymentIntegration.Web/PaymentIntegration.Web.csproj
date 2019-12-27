@@ -130,7 +130,7 @@
     <Compile Include="Controllers\GarantiBaseController.cs" />
     <Compile Include="Controllers\GarantiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IsBanksController.cs" />
+    <Compile Include="Controllers\VakifBanksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,7 +179,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\GarantiBase\" />
-    <Folder Include="Views\IsBanks\" />
+    <Folder Include="Views\VakifBanks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

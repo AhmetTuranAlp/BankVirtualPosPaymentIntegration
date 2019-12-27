@@ -1,5 +1,4 @@
 ﻿using Fluentx.Mvc;
-using PaymentIntegration.Banks.Denizbank.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
