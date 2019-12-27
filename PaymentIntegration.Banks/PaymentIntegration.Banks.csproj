@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Denizbank\Response\DenizbanksModel.cs" />
     <Compile Include="Garanti\BaseEntity\Card.cs" />
     <Compile Include="Garanti\BaseEntity\Customer.cs" />
     <Compile Include="Garanti\BaseEntity\Order.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="Garanti\XmlBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="İş Bankası\Response\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

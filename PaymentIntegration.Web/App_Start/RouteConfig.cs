@@ -16,7 +16,7 @@ namespace PaymentIntegration.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Garanti", action = "Sale3DSecure", id = UrlParameter.Optional }
+                defaults: new { controller = "DenizBanks", action = "Sale3D", id = UrlParameter.Optional }
             );
         }
     }

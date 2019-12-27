@@ -154,3 +154,7 @@ D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\obj\Debug\PaymentIntegr
 D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\obj\Debug\PaymentIntegration.Web.csproj.CopyComplete
 D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\obj\Debug\PaymentIntegration.Web.dll
 D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\obj\Debug\PaymentIntegration.Web.pdb
+D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\bin\Fluentx.dll
+D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\bin\Fluentx.Mvc.dll
+D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\bin\Fluentx.xml
+D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\bin\Fluentx.Mvc.xml

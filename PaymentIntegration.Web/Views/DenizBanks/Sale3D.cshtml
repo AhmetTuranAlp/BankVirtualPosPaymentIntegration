@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Sale3D";
+}
+
+<form action="/DenizBanks/Sale3D" method="post" class="form-horizontal">
+    <fieldset>
+        <!-- Form Name -->
+        <legend><label style="font-weight:bold;width:250px;">Ödeme Bilgileri</label></legend>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">  Kart Numarası:</label>
+            <div class="col-md-4">
+                <input value="4090700090840057" name="creditCardNo" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">  Son Kullanma Tarihi / Ay: </label>
+            <div class="col-md-4">
+                <input value="11 " name="expireMonth" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">  Son Kullanma Tarihi / Yıl: </label>
+            <div class="col-md-4">
+                <input value="22 " name="expireYear" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">  CVC: </label>
+            <div class="col-md-4">
+                <input value="592" name="cvv" class="form-control input-md">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">  OrderID:</label>
+            <div class="col-md-4">
+                @Html.TextBox("orderID", Guid.NewGuid().ToString().Replace("-", "").Substring(1, 30), new { id = "orderID", @class = "form-control ", required = true })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">  İşlem Tutarı:</label>
+            <div class="col-md-4">
+                <input value="1.01" name="transactionAmount" class="form-control input-md">
+            </div>
+        </div>
+    </fieldset>
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+            <button type="submit" id="" name="" class="btn btn-danger"> Ödeme Yap</button>
+        </div>
+    </div>
+</form>
+
+
+@*@{ 
+    String shopCode = "3123";   //Banka tarafından verilen üye işyeri mağaza numarası     
+    String purchaseAmount = "1.01"; //İşlem tutarı
+    String currency = "949"; // Kur Bilgisi - 949 TL
+    String orderId = "";  //Sipariş Numarası
+    String okUrl = "http://localhost:2428/DenizBanks/Success";     //İşlem başarılıysa yönlendirilecek sayfa
+    String failUrl = "http://localhost:2428/DenizBanks/Error";   //İşlem başarısızsa yönlendirilecek sayfa
+    String rnd = DateTime.Now.ToString();  //Her işlemde değişen bir değer olmalıdır
+
+    String installmentCount = "";      //Taksit sayısı
+    String txnType = "Auth"; // İşlem tipi
+    String merchantPass = "gDg1N";  //İş yeri anahtarı
+    String str = shopCode + orderId + purchaseAmount + okUrl + failUrl + txnType + installmentCount + rnd + merchantPass;
+
+    System.Security.Cryptography.SHA1 sha = new System.Security.Cryptography.SHA1CryptoServiceProvider();
+    byte[] bytes = System.Text.Encoding.GetEncoding("ISO-8859-9").GetBytes(str);
+    byte[] hashingbytes = sha.ComputeHash(bytes);
+
+    String hash = Convert.ToBase64String(hashingbytes);  // merchantpass açık şekilde gönderilmez. Hash değerine eklenerek sunucunun hash i kontrol etmesi sağlanır     
+
+}
+
+<form method="post" action="https://sanaltest.denizbank.com/MPI/Default.aspx">
+    <table>
+        <tr>
+            <td>Kredi Kart Numarası:</td>
+            <td><input type="text" name="Pan" size="20" value="4090700090840057" />
+        </tr>
+
+        <tr>
+            <td>Güvenlik Kodu:</td>
+            <td><input type="text" name="Cvv2" size="4" value="592" /></td>
+        </tr>
+
+        <tr>
+            <td>Son Kullanma Tarihi (MMYY):</td>
+            <td><input type="text" name="Expiry" value="1122" /></td>
+
+        </tr>
+        <tr>
+            <td>Bonus:</td>
+            <td><input type="text" name="BonusAmount" value="" /></td>
+        </tr>
+        <tr>
+            <td>Visa/MC secimi</td>
+            <td>
+                <select name="CardType">
+                    <option value="0">Visa</option>
+                    <option value="1">MasterCard</option>
+                </select>
+        </tr>
+
+        <tr>
+            <td align="center" colspan="2">
+                <input type="submit" value="Ödemeyi Tamamla" />
+            </td>
+        </tr>
+
+    </table>
+    <input type="hidden" name="ShopCode" value="@shopCode">
+    <input type="hidden" name="PurchAmount" value="@purchaseAmount">
+    <input type="hidden" name="Currency" value="@currency">
+    <input type="hidden" name="OrderId" value="@orderId">
+    <input type="hidden" name="OkUrl" value="@okUrl">
+    <input type="hidden" name="FailUrl" value="@failUrl">
+    <input type="hidden" name="Rnd" value="@rnd">
+    <input type="hidden" name="Hash" value="@hash">
+    <input type="hidden" name="TxnType" value="@txnType" />
+    <input type="hidden" name="InstallmentCount" value="@installmentCount" />
+    <input type="hidden" name="SecureType" value="3DPay">
+
+    <input type="hidden" name="Lang" value="tr">
+
+
+</form>*@
