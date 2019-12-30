@@ -9,3 +9,6 @@ Garanti Bank Documentation
 
 ------------------------------------------------------------------------------------------------------
 
+Vakıfbank Documentation
+
+https://www.vakifbankpos.com.tr/assets/files/VPOS 724 _GET724_ENTEGRASYON_DOKUMANI.zip
