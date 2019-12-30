@@ -15,7 +15,39 @@ namespace PaymentIntegration.Web.Controllers
         // GET: VakifBanks
         public ActionResult Index()
         {
-            string data = "Pan=4289450189088488&ExpiryDate=2304&PurchaseAmount=5.00&Currency=949&BrandName=100&VerifyEnrollmentRequestId=" + Guid.NewGuid().ToString("N") + "&SessionInfo=&MerchantID=000100000013506&MerchantPassword=123456&TransactionId=Sale&SuccessUrl=http://localhost:2428/Home/Success" + "&FailureUrl=http://localhost:2428/Home/Error"; //replace <value>
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Sale3D(string creditCardNo, string expireMonth, string expireYear, string cvv, string transactionAmount, string orderID)
+        {
+            string MerchantId = "000100000013506"; //Üye İşyeri Numarası
+            string MerchantPassword = "123456"; //Üye İşyeri Şifresi
+            string TransactionId = "Sale"; //Peşin ve Taksitli Satış işlemleri için “Sale” olarak gönderilmelidir.
+            string VerifyEnrollmentRequestId = Guid.NewGuid().ToString("N"); //ÜİY tarafından üretilen işlem numarasıdır. Benzersiz olmalıdır. ÜİY, işlemlerini bu numara üzerinden takip edebilir. 
+            string Pan = creditCardNo; //Kredi kartı numarası
+            string ExpiryDate = expireYear + expireMonth; //Kredi kartı son kullanma tarihi. YYAA formatında 4 karakter olarak gönderilmelidir. 
+            string PurchaseAmount = transactionAmount; //Satış tutarı
+            string Currency = "949"; //İşlemin yapıldığı sayısal para birimi kodu 
+            string BrandName = "100"; //Kredi kartı Kart Kuruluşu Bilgisi. 100:VISA 200:MASTERCARD 300:TROY 
+            string SessionInfo = ""; //Oturum Bilgisi. ÜİY tarafında gönderilmesi Opsiyonel, sadece bilgi amaçlı tutulan bir alandır.
+            string SuccessUrl = "http://localhost:2428/VakifBanks/Success"; //ÜİY’nin işlem sonucun başarılı olması durumunda, dönüş yapılmasını istediği sayfa URL si. 
+            string FailureUrl = "http://localhost:2428/VakifBanks/Error"; //ÜİY’nin işlem sonucunun başarısız olması durumunda, dönüş yapılmasını istediği sayfa URL si.
+            string InstallmentCount = ""; //İşlem taksit sayısı. Eğer ÜİY tarafından gönderilirse, 1'den büyük bir değer olmalıdır. 0 ya da 1 gönderildiğinde MPI işlemi reddeder. 
+            
+            string data = "Pan=" + creditCardNo +
+                "&ExpiryDate=" + expireYear + expireMonth +
+                "&PurchaseAmount=" + transactionAmount +
+                "&Currency=" + Currency +
+                "&BrandName=" + BrandName +
+                "&VerifyEnrollmentRequestId=" + VerifyEnrollmentRequestId +
+                "&MerchantID=" + MerchantId +
+                "&MerchantPassword=" + MerchantPassword +
+                "&TransactionId=" + TransactionId +
+                "&SuccessUrl=" + SuccessUrl +
+                "&FailureUrl=" + FailureUrl +
+                "&SessionInfo="; 
+
             byte[] dataStream = Encoding.UTF8.GetBytes(data);
             HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create("https://3dsecuretest.vakifbank.com.tr:4443/MPIAPI/MPI_Enrollment.aspx"); //Mpi Enrollment Adresi
             webRequest.Method = "POST";
@@ -44,7 +76,6 @@ namespace PaymentIntegration.Web.Controllers
             if (string.IsNullOrEmpty(responseFromServer))
             {
                 int a = 0;
-
             }
 
             var xmlDocument = new XmlDocument();
@@ -71,21 +102,21 @@ namespace PaymentIntegration.Web.Controllers
                 string postBackForm =
                    @"<html>
                           <head>
-                            <meta name=""viewport"" content=""width=device-width"" />
+                            <meta name='viewport' content='width=device-width' />
                             <title>MpiForm</title>
                             <script>
                               function postPage() {
-                              document.forms[""frmMpiForm""].submit();
+                              document.forms['frmMpiForm'].submit();
                               }
                             </script>
                           </head>
-                          <body onload=""javascript:postPage();"">
-                            <form action=""@ACSUrl"" method=""post"" id=""frmMpiForm"" name=""frmMpiForm"">
-                              <input type=""hidden"" name=""PaReq"" value=""@PAReq"" />
-                              <input type=""hidden"" name=""TermUrl"" value=""@TermUrl"" />
-                              <input type=""hidden"" name=""MD"" value=""@MD "" />
+                          <body onload='javascript:postPage();'>
+                            <form action='@ACSUrl' method='post' id='frmMpiForm' name='frmMpiForm'>
+                              <input type='hidden' name='PaReq' value='@PAReq' />
+                              <input type='hidden' name='TermUrl' value='@TermUrl' />
+                              <input type='hidden' name='MD' value='@MD' />
                               <noscript>
-                                <input type=""submit"" id=""btnSubmit"" value=""Gönder"" />
+                                <input type='submit' id='btnSubmit' value='Gönder' />
                               </noscript>
                             </form>
                           </body>
@@ -125,6 +156,7 @@ namespace PaymentIntegration.Web.Controllers
         }
         public ActionResult Error()
         {
+            string Status = Request.Form["Status"];
             return View();
         }
     }

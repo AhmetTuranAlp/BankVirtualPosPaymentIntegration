@@ -174,12 +174,14 @@
     <Content Include="Views\Garanti\Success.cshtml" />
     <Content Include="Views\DenizBanks\Sale3D.cshtml" />
     <Content Include="Views\DenizBanks\Success.cshtml" />
+    <Content Include="Views\VakifBanks\Index.cshtml" />
+    <Content Include="Views\VakifBanks\Sale3D.cshtml" />
+    <Content Include="Views\VakifBanks\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\GarantiBase\" />
-    <Folder Include="Views\VakifBanks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
