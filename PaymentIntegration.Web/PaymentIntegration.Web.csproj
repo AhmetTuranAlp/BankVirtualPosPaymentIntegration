@@ -131,12 +131,11 @@
     <Compile Include="Controllers\GarantiBaseController.cs" />
     <Compile Include="Controllers\GarantiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NestPayController.cs" />
     <Compile Include="Controllers\VakifBanksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ThreeDHelper.cs" />
-    <Compile Include="Models\CreditCardModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -180,12 +179,14 @@
     <Content Include="Views\VakifBanks\Index.cshtml" />
     <Content Include="Views\VakifBanks\Sale3D.cshtml" />
     <Content Include="Views\VakifBanks\Error.cshtml" />
-    <Content Include="Views\Home\Success.cshtml" />
-    <Content Include="Views\Home\UnSuccess.cshtml" />
-    <Content Include="Views\Home\ThreeDGate.cshtml" />
+    <Content Include="Views\NestPay\Index.cshtml" />
+    <Content Include="Views\NestPay\ThreeDGate.cshtml" />
+    <Content Include="Views\NestPay\Success.cshtml" />
+    <Content Include="Views\NestPay\UnSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\GarantiBase\" />
   </ItemGroup>
   <ItemGroup>

@@ -56,6 +56,8 @@
     <Compile Include="Garanti\Response\ServicesXmlResponse.cs" />
     <Compile Include="Garanti\RestHttpCaller.cs" />
     <Compile Include="Garanti\XmlBuilder.cs" />
+    <Compile Include="NestPay\CreditCardModel.cs" />
+    <Compile Include="NestPay\ThreeDHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
