@@ -11,6 +11,7 @@ namespace PaymentIntegration.Web.Controllers
     public class NestPayController : Controller
     {
         // NestPay(assecco) => Ziraat Bankası, Finansbank, Halkbank, Teb, TürkiyeFinans, Akbank, İş Bankası, Şekerbank, Anadolubank nestpay altyapısını kullanmaktadır.
+
         public ActionResult Index()
         {
             return View();
