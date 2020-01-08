@@ -158,3 +158,4 @@ D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\bin\Fluentx.dll
 D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\bin\Fluentx.Mvc.dll
 D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\bin\Fluentx.xml
 D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\bin\Fluentx.Mvc.xml
+D:\GitHup\BanksPaymentIntegration\PaymentIntegration.Web\bin\Iyzipay.dll

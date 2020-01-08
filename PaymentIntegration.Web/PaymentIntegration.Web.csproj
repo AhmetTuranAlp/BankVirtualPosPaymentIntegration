@@ -51,6 +51,9 @@
     <Reference Include="Fluentx.Mvc, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fluentx.Mvc.1.0.4\lib\Fluentx.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Iyzipay, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iyzipay.2.1.32\lib\net45\Iyzipay.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -131,6 +134,7 @@
     <Compile Include="Controllers\GarantiBaseController.cs" />
     <Compile Include="Controllers\GarantiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IyzicoController.cs" />
     <Compile Include="Controllers\NestPayController.cs" />
     <Compile Include="Controllers\VakifBanksController.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,6 +187,7 @@
     <Content Include="Views\NestPay\ThreeDGate.cshtml" />
     <Content Include="Views\NestPay\Success.cshtml" />
     <Content Include="Views\NestPay\UnSuccess.cshtml" />
+    <Content Include="Views\Iyzico\PaymentResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

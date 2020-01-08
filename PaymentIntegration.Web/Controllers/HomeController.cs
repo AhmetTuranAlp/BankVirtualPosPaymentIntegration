@@ -20,26 +20,6 @@ namespace PaymentIntegration.Web.Controllers
     {
         public ActionResult Index()
         {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             var xml = @"<?xml version='1.0' encoding='utf-8'?>" +
                 "<posnetRequest>" +
                 "<mid>6706598320</mid>" +
@@ -64,7 +44,6 @@ namespace PaymentIntegration.Web.Controllers
             webRequest.ContentType = "=application/xwww-form-urlencoded; charset=utf-8";
             webRequest.KeepAlive = false;
             string responseFromServer = "";
-
 
             using (WebResponse webResponse = webRequest.GetResponse())
             {
