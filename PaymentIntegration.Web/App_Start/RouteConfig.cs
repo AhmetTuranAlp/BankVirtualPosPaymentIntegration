@@ -16,7 +16,7 @@ namespace PaymentIntegration.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Iyzico", action = "PaymentTypeSave", id = UrlParameter.Optional }
+                defaults: new { controller = "Kuveytturk", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

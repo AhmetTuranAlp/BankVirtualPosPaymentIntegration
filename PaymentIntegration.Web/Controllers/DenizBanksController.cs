@@ -41,7 +41,6 @@ namespace PaymentIntegration.Web.Controllers
 
             string Hash = Convert.ToBase64String(hashingbytes);  // merchantpass açık şekilde gönderilmez. Hash değerine eklenerek sunucunun hash i kontrol etmesi sağlanır     
             
-
             Dictionary<string, object> postData = new Dictionary<string, object>();
             postData.Add("Pan", Pan);
             postData.Add("Cvv2", Cvv2);

@@ -22,7 +22,6 @@ namespace PaymentIntegration.Web.Controllers
         public ActionResult Index(CreditCardModel model)
         {
             TempData["CreditCard"] = model;
-
             return RedirectToAction("ThreeDGate");
         }
 
@@ -42,7 +41,7 @@ namespace PaymentIntegration.Web.Controllers
             string randomKey = ThreeDHelper.CreateRandomValue(10, false, false, true, false);
             string installment = "1";//Taksit
             string orderNumber = ThreeDHelper.CreateRandomValue(8, false, false, true, false);//Sipariş numarası
-            string currencyCode = "949"; //TL ISO code | EURO "978" | Dolar "840"
+            string currencyCode = "949";//TL ISO code | EURO "978" | Dolar "840"
             string languageCode = "tr";// veya "en"
             string cardType = "1"; //Kart Ailesi Visa 1 | MasterCard 2 | Amex 3
             string orderAmount = "24.90";//Decimal seperator nokta olmalı!
@@ -51,7 +50,6 @@ namespace PaymentIntegration.Web.Controllers
             string hashFormat = clientId + orderNumber + orderAmount + successUrl + unsuccessUrl + processType + installment + randomKey + storeKey;
 
             var paymentCollection = new NameValueCollection();
-
             //Mağaza bilgileri
             paymentCollection.Add("hash", ThreeDHelper.ConvertSHA1(hashFormat));
             paymentCollection.Add("clientid", clientId);

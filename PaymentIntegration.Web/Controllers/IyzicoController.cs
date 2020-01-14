@@ -24,70 +24,66 @@ namespace PaymentIntegration.Web.Controllers
             Options options = Options();
 
             CreatePaymentRequest request = new CreatePaymentRequest();
-            request.Locale = Locale.TR.ToString();
+            request.Locale = Locale.TR.ToString(); //Zorunlu
             request.ConversationId = "123456789";
-            request.Price = "1";
-            request.PaidPrice = "1.2";
-            request.Currency = Currency.TRY.ToString();
-            request.Installment = 1;
+            request.Price = "1";//Zorunlu
+            request.PaidPrice = "1.2";//Zorunlu
+            request.Currency = Currency.TRY.ToString();//Zorunlu
+            request.Installment = 1;//Zorunlu
             request.BasketId = "B67832";
             request.PaymentChannel = PaymentChannel.WEB.ToString();
             request.PaymentGroup = PaymentGroup.SUBSCRIPTION.ToString();
-            request.CallbackUrl = "http://localhost:2428/Iyzico/PaymentResult";
-
+            request.CallbackUrl = "http://localhost:2428/Iyzico/PaymentResult";//Zorunlu
 
             PaymentCard paymentCard = new PaymentCard();
-            paymentCard.CardHolderName = "John Doe";
-            paymentCard.CardNumber = "5528790000000008";
-            paymentCard.ExpireMonth = "12";
-            paymentCard.ExpireYear = "2030";
-            paymentCard.Cvc = "123";
+            paymentCard.CardHolderName = "John Doe";//Zorunlu
+            paymentCard.CardNumber = "5528790000000008";//Zorunlu
+            paymentCard.ExpireMonth = "12";//Zorunlu
+            paymentCard.ExpireYear = "2030";//Zorunlu
+            paymentCard.Cvc = "123";//Zorunlu
             paymentCard.RegisterCard = 0;
             request.PaymentCard = paymentCard;
 
-
             Buyer buyer = new Buyer();
-            buyer.Id = Guid.NewGuid().ToString();
-            buyer.Name = "John";
-            buyer.Surname = "Doe";
+            buyer.Id = Guid.NewGuid().ToString();//Zorunlu
+            buyer.Name = "John";//Zorunlu
+            buyer.Surname = "Doe";//Zorunlu
             buyer.GsmNumber = "+905350000000";
-            buyer.Email = "email@email.com";
-            buyer.IdentityNumber = "74300864791";
+            buyer.Email = "email@email.com";//Zorunlu
+            buyer.IdentityNumber = "74300864791";//Zorunlu
             buyer.LastLoginDate = "2015-10-05 12:43:35";
             buyer.RegistrationDate = "2013-04-21 15:12:09";
-            buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
-            buyer.Ip = Request.UserHostAddress;
-            buyer.City = "Istanbul";
-            buyer.Country = "Turkey";
+            buyer.RegistrationAddress = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";//Zorunlu
+            buyer.Ip = Request.UserHostAddress;//Zorunlu
+            buyer.City = "Istanbul";//Zorunlu
+            buyer.Country = "Turkey";//Zorunlu
             buyer.ZipCode = "34732";
             request.Buyer = buyer;
-
-
+            
             Address shippingAddress = new Address();
-            shippingAddress.ContactName = "Jane Doe";
-            shippingAddress.City = "Istanbul";
-            shippingAddress.Country = "Turkey";
+            shippingAddress.ContactName = "Jane Doe";//Zorunlu
+            shippingAddress.City = "Istanbul";//Zorunlu
+            shippingAddress.Country = "Turkey";//Zorunlu
             shippingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             shippingAddress.ZipCode = "34742";
-            request.ShippingAddress = shippingAddress;
+            request.ShippingAddress = shippingAddress;//Zorunlu
 
             Address billingAddress = new Address();
-            billingAddress.ContactName = "Jane Doe";
-            billingAddress.City = "Istanbul";
-            billingAddress.Country = "Turkey";
+            billingAddress.ContactName = "Jane Doe";//Zorunlu
+            billingAddress.City = "Istanbul";//Zorunlu
+            billingAddress.Country = "Turkey";//Zorunlu
             billingAddress.Description = "Nidakule Göztepe, Merdivenköy Mah. Bora Sok. No:1";
             billingAddress.ZipCode = "34742";
-            request.BillingAddress = billingAddress;
-
+            request.BillingAddress = billingAddress;//Zorunlu
 
             List<BasketItem> basketItems = new List<BasketItem>();
             BasketItem firstBasketItem = new BasketItem();
-            firstBasketItem.Id = "BI101";
-            firstBasketItem.Name = "Binocular";
-            firstBasketItem.Category1 = "Collectibles";
+            firstBasketItem.Id = "BI101";//Zorunlu
+            firstBasketItem.Name = "Binocular";//Zorunlu
+            firstBasketItem.Category1 = "Collectibles";//Zorunlu
             firstBasketItem.Category2 = "Accessories";
             firstBasketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-            firstBasketItem.Price = "0.3";
+            firstBasketItem.Price = "0.3";//Zorunlu
             basketItems.Add(firstBasketItem);
 
             BasketItem secondBasketItem = new BasketItem();
@@ -153,9 +149,7 @@ namespace PaymentIntegration.Web.Controllers
                 return View(PaymentResultVM);
             }
         }
-
-
-
+        
         public Options Options()
         {
             Options options = new Options();

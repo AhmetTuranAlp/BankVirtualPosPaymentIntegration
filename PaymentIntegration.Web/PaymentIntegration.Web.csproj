@@ -135,8 +135,10 @@
     <Compile Include="Controllers\GarantiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IyzicoController.cs" />
+    <Compile Include="Controllers\KuveytturkController.cs" />
     <Compile Include="Controllers\NestPayController.cs" />
     <Compile Include="Controllers\VakifBanksController.cs" />
+    <Compile Include="Controllers\YapikrediController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,11 +190,13 @@
     <Content Include="Views\NestPay\Success.cshtml" />
     <Content Include="Views\NestPay\UnSuccess.cshtml" />
     <Content Include="Views\Iyzico\PaymentResult.cshtml" />
+    <Content Include="Views\Kuveytturk\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\GarantiBase\" />
+    <Folder Include="Views\Yapikredi\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
