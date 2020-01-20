@@ -153,8 +153,8 @@ namespace PaymentIntegration.Web.Controllers
         public Options Options()
         {
             Options options = new Options();
-            options.ApiKey = "sandbox-WfjBsjY2kNDXHnehDBtq45MBwQ7Kkyv9";
-            options.SecretKey = "sandbox-30uaEn94Ma92HpfvVuaXy52aokBweJG2";
+            options.ApiKey = "";
+            options.SecretKey = "";
             options.BaseUrl = "https://sandbox-api.iyzipay.com";
             return options;
         }
