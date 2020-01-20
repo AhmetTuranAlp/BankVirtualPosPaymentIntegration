@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model PaymentIntegration.Banks.YapıKredi.Response
+
+
+
+<script type="text/javascript">
+    function submitFormEx(Form, OpenNewWindowFlag, WindowName) {
+        submitForm(Form, OpenNewWindowFlag, WindowName)
+        Form.submit();
+    }
+
+    function submitForm(Form, OpenNewWindowFlag, WindowName) {
+
+        var isURLExist = false;
+        var isNewWindowExist = false;
+
+        if (document.all || document.getElementById) {
+            for (i = 0; i < Form.length; i++) {
+                var tempobj = Form.elements[i];
+
+                if (tempobj.name.toLowerCase() == "url") {
+                    Form.url.value = location.href;
+                    isURLExist = true;
+                }
+
+                if (OpenNewWindowFlag && tempobj.name == "openANewWindow") {
+                    tempobj.value = "1";
+                    isNewWindowExist = true;
+                }
+                else if (tempobj.name == "openANewWindow") {
+                    tempobj.value = "0";
+                    isNewWindowExist = true;
+                }
+            }
+        }
+
+        if (!isURLExist) {
+            el = document.createElement("input");
+            el.name = "url";
+            el.type = "hidden";
+            el.value = location.href;
+            el = Form.appendChild(el);
+        }
+
+        if (!isNewWindowExist) {
+            el2 = document.createElement("input");
+            el2.name = "openANewWindow";
+            el2.type = "hidden";
+            if (OpenNewWindowFlag)
+                el2.value = "1";
+            else
+                el2.value = "0";
+            el2 = Form.appendChild(el2);
+        }
+
+        if (OpenNewWindowFlag) {
+            window.name = "merchantWindow";
+            openWindow(WindowName, 650, 600);
+        }
+        else
+            window.name = "YKBWindow";
+    }
+
+    function openWindow(WindowName, width, height) {
+        x = (640 - width) / 2, y = (480 - height) / 2;
+
+        if (screen) {
+            y = (screen.availHeight - height - 70) / 2;
+            x = (screen.availWidth - width) / 2;
+        }
+
+        window.open('', WindowName, 'width=' + width + ',height=' + height + ',screenX=' + x + ',screenY=' + y + ',top=' + y + ',left=' + x + ',status=yes,location=yes,resizable=no,scrollbars=yes');
+    }
+
+
+
+</script>
+
+<form name="formName" method="post" action="https://setmpos.ykb.com/3DSWebService/YKBPaymentService" target="YKBWindow">
+    <input name="mid" type="hidden" id="mid" value="6706598320" />
+    <input name="posnetID" type="hidden" id="PosnetID" value="29004" />
+    <input name="posnetData" type="hidden" id="posnetData" value="@Model.data1" />
+    <input name="posnetData2" type="hidden" id="posnetData2" value="@Model.data2" />
+    <input name="digest" type="hidden" id="sign" value="@Model.sign" />
+    <input name="vftCode" type="hidden" id="vftCode" value="" />
+    @*<input name="useJokerVadaa" type="hidden" id="useJokerVadaa" value="1" />*@
+    <input name="merchantReturnURL" type="hidden" id=" merchantReturnURL" value="http://localhost:2428/Yapikredi/ResultPage" />
+    <input name="lang" type="hidden" id="lang" value="tr" />
+    <input name="url" type="hidden" id="url" value="http://localhost:2428/Yapikredi/Payment" />
+    <input name="openANewWindow" type="hidden" id="openANewWindow" value="0" />
+    <input type="submit" name="Submit" value="Doğrulama Yap" onclick="submitFormEx(formName, 0, 'YKBWindow')" />
+</form>
