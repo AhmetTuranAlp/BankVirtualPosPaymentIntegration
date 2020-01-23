@@ -1,0 +1,9 @@
+D:\GitHup\BanksPaymentIntegration\BanksPaymentIntegration.PaymentCore\bin\Debug\netstandard2.0\BanksPaymentIntegration.PaymentCore.deps.json
+D:\GitHup\BanksPaymentIntegration\BanksPaymentIntegration.PaymentCore\bin\Debug\netstandard2.0\BanksPaymentIntegration.PaymentCore.dll
+D:\GitHup\BanksPaymentIntegration\BanksPaymentIntegration.PaymentCore\obj\Debug\netstandard2.0\BanksPaymentIntegration.PaymentCore.csproj.CoreCompileInputs.cache
+D:\GitHup\BanksPaymentIntegration\BanksPaymentIntegration.PaymentCore\obj\Debug\netstandard2.0\BanksPaymentIntegration.PaymentCore.AssemblyInfoInputs.cache
+D:\GitHup\BanksPaymentIntegration\BanksPaymentIntegration.PaymentCore\obj\Debug\netstandard2.0\BanksPaymentIntegration.PaymentCore.AssemblyInfo.cs
+D:\GitHup\BanksPaymentIntegration\BanksPaymentIntegration.PaymentCore\bin\Debug\netstandard2.0\BanksPaymentIntegration.PaymentCore.pdb
+D:\GitHup\BanksPaymentIntegration\BanksPaymentIntegration.PaymentCore\obj\Debug\netstandard2.0\BanksPaymentIntegration.PaymentCore.dll
+D:\GitHup\BanksPaymentIntegration\BanksPaymentIntegration.PaymentCore\obj\Debug\netstandard2.0\BanksPaymentIntegration.PaymentCore.pdb
+D:\GitHup\BanksPaymentIntegration\BanksPaymentIntegration.PaymentCore\obj\Debug\netstandard2.0\BanksPaymentIntegration.PaymentCore.csprojAssemblyReference.cache

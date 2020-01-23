@@ -36,7 +36,7 @@ namespace PaymentIntegration.Web.Controllers
               "</oosRequestData>" +
               "</posnetRequest>";
 
-            var asd = Server.UrlEncode(xml);
+            var asd = Uri.EscapeUriString(xml);
             HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create("https://setmpos.ykb.com/PosnetWebService/XML?xmldata=" + asd);
             webRequest.Method = "POST";
             webRequest.ContentType = "=application/xwww-form-urlencoded; charset=utf-8";
@@ -57,8 +57,7 @@ namespace PaymentIntegration.Web.Controllers
 
             var xmlDocument = new XmlDocument();
             xmlDocument.LoadXml(responseFromServer);
-
-
+            
             var data1 = xmlDocument.SelectSingleNode("posnetResponse/oosRequestDataResponse/data1").InnerText;
             var data2 = xmlDocument.SelectSingleNode("posnetResponse/oosRequestDataResponse/data2").InnerText;
             var sign = xmlDocument.SelectSingleNode("posnetResponse/oosRequestDataResponse/sign").InnerText;
@@ -74,16 +73,7 @@ namespace PaymentIntegration.Web.Controllers
             return View(response);
         }
 
-        private string HASH(string originalString)
-        {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(originalString));
-                return Convert.ToBase64String(bytes);
-            }
-        }
-
-
+        
         public ActionResult Payment()
         {
             return View();
@@ -192,7 +182,14 @@ namespace PaymentIntegration.Web.Controllers
 
             return View();
         }
-
-
+        
+        private string HASH(string originalString)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(originalString));
+                return Convert.ToBase64String(bytes);
+            }
+        }
     }
 }

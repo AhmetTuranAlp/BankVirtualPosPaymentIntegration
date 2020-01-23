@@ -1,4 +1,5 @@
-﻿using PaymentIntegration.Banks.Garanti.BaseEntity;
+﻿
+using PaymentIntegration.Banks.Garanti.BaseEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

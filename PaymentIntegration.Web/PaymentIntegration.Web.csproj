@@ -134,7 +134,6 @@
     <Compile Include="Controllers\GarantiBaseController.cs" />
     <Compile Include="Controllers\GarantiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IyzicoController.cs" />
     <Compile Include="Controllers\KuveytturkController.cs" />
     <Compile Include="Controllers\NestPayController.cs" />
     <Compile Include="Controllers\VakifBanksController.cs" />
@@ -176,7 +175,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Garanti\Sale3DSecure.cshtml" />
     <Content Include="Views\Garanti\Error.cshtml" />
     <Content Include="Views\Garanti\Success.cshtml" />
@@ -189,16 +187,17 @@
     <Content Include="Views\NestPay\ThreeDGate.cshtml" />
     <Content Include="Views\NestPay\Success.cshtml" />
     <Content Include="Views\NestPay\UnSuccess.cshtml" />
-    <Content Include="Views\Iyzico\PaymentResult.cshtml" />
     <Content Include="Views\Kuveytturk\Payment.cshtml" />
     <Content Include="Views\Yapikredi\Payment.cshtml" />
     <Content Include="Views\Yapikredi\Index.cshtml" />
     <Content Include="Views\Yapikredi\ResultPage.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\GarantiBase\" />
+    <Folder Include="Views\Iyzico\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -214,9 +213,9 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PaymentIntegration.Banks\PaymentIntegration.Banks.csproj">
-      <Project>{1473053F-3925-4CA1-BAD9-37484D523E35}</Project>
-      <Name>PaymentIntegration.Banks</Name>
+    <ProjectReference Include="..\BanksPaymentIntegration.PaymentCore\BanksPaymentIntegration.PaymentCore.csproj">
+      <Project>{E084442E-B5EB-436B-8ED9-429CDF6AF2D2}</Project>
+      <Name>BanksPaymentIntegration.PaymentCore</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
