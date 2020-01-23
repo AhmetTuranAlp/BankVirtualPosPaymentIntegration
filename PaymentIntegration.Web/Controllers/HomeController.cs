@@ -162,8 +162,6 @@ namespace PaymentIntegration.Web.Controllers
         [HttpPost]
         public ActionResult PaymentResult(object data)
         {
-            var asda = "";
-
             return View();
         }
 
