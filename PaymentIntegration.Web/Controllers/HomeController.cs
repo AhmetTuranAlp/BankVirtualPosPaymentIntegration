@@ -122,6 +122,8 @@ namespace PaymentIntegration.Web.Controllers
                     HtmlContent = payment_TurkiyeFinans.OpenProvision(paymentInfo);
                     return Content(HtmlContent);
                 case PaymentType.DenizBank:
+                    Payment_DenizBank payment_DenizBank = new Payment_DenizBank();
+                    HtmlContent = payment_DenizBank.OpenProvision(paymentInfo);
                     break;
                 case PaymentType.VakifBank:
                     Payment_Vakifbank payment_Vakifbank = new Payment_Vakifbank();
@@ -140,6 +142,9 @@ namespace PaymentIntegration.Web.Controllers
                 case PaymentType.YapiKredi:
                     break;
                 case PaymentType.Kuveytturk:
+                    Payment_Kuveytturk payment_Kuveytturk = new Payment_Kuveytturk();
+                    HtmlContent = payment_Kuveytturk.OpenProvision(paymentInfo);
+                    Response.Write(HtmlContent);
                     break;
                 case PaymentType.OdeaBank:
                     break;
@@ -156,11 +161,10 @@ namespace PaymentIntegration.Web.Controllers
                     break;
             }
             return View();
-
         }
 
         [HttpPost]
-        public ActionResult PaymentResult(object data)
+        public ActionResult PaymentResult()
         {
             return View();
         }

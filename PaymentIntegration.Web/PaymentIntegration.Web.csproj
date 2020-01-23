@@ -135,7 +135,6 @@
     <Compile Include="Controllers\GarantiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KuveytturkController.cs" />
-    <Compile Include="Controllers\NestPayController.cs" />
     <Compile Include="Controllers\VakifBanksController.cs" />
     <Compile Include="Controllers\YapikrediController.cs" />
     <Compile Include="Global.asax.cs">
